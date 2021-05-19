@@ -22,9 +22,10 @@ console.log(typeof jsIsFun);
 let age = 31;
 age =32;
 const birthYear = 1987;
+console.log(birthYear + age);
 
 //old way to declare variables
-var job = 'teacher';
+//var job = 'teacher';
 job = 'coder';
 console.log(job);
 
@@ -57,6 +58,8 @@ console.log(x);
 //comparison operators
 console.log(ageJonas > ageVic); // >, <, >=, <=, ===
 const isFullAge = ageVic >= 18;
+
+console.log(isFullAge);
 console.log(now - 1991 < now - 1987);
 
 /*OPERATOR PRECEDENCE*/
@@ -107,6 +110,140 @@ if (birthYearBrian < 2000){
 }
 console.log(`Brian born in the ${century} century`);
 
+/*TYPE CONVERSION AND COERCION*/
+
+//type conversion
+const inputYear = '1993';
+console.log(Number(inputYear));
+console.log(inputYear + 18);
+
+console.log(String(23),23);
+
+//type coersion
+console.log(`I'm ` + 33 + ` years old`)
+console.log('33'-10-`3`);
+console.log('33'/`3`);
+console.log('33'>`3`);
+
+let n = '1' + 1;
+n = n - 1;
+console.log(n);
+
+/*TRUTHY AND FALSY VALUES*/
+
+//5 false values: 0, '', undefined, null, Nan
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('Vic'));
+console.log(Boolean({}));
+console.log(Boolean(''));
+
+const money =0;
+if(money){
+    console.log(`Don't spend it all!`)
+} else {
+    console.log(`Yoy should get a Job!`)
+}
+
+let high;
+if(high){
+    console.log(`YAY high is Defined!`)
+} else {
+    console.log(`High is Undefined!`)
+}
+
+/*EQUALITY OPERATORS*/
+
+const yourAge = 18;
+if(yourAge === 18){
+    console.log(`You just became an adult (strict)`);
+}
+if(yourAge == '18'){
+    console.log(`You just became an adult (loose)`);
+}
+
+const favourite = Number(prompt(`What's your favorite number:`));
+console.log(favourite);
+console.log(typeof favourite);
+
+if(favourite === 23) {
+    console.log(`Cool 23 is an Amazing number!`);
+} else if(favourite === 7) {
+    console.log(`Cool 7 is also an Amazing number!`);
+} else {
+    console.log(`The number is not 7 or 23!`);
+}
+
+if(favourite !== 23) {
+console.log(`Why not 23!?`);
+}
+
+/*BOOLEAN LOGIC*/
+let exampleAge = 23;
+let exampleA = exampleAge >=30;
+let exampleB = exampleAge < 25;
+
+console.log(!exampleA);
+console.log(exampleA && exampleB);
+console.log(exampleA || exampleB);
+console.log(!exampleA && exampleB);
+console.log(exampleA || !exampleB);
+
+/*LOGICAL OPERATORS*/
+
+const hasDriversLicense = true;
+const hasGoodVision = false;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const isTired = true;
+console.log(hasDriversLicense || hasGoodVision || isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+    console.log(`Naia is able to drive!`);
+} else {
+    console.log(`Someone else should drive...!`);
+}
+
+/*THE SWITCH STATEMENT*/
+
+const day = `monday`;
+
+switch (day) {
+    case "monday": // day === 'monday'
+        console.log(`Plan course structure!`);
+        console.log(`Go to coding meetup`);
+        break;
+    case "tuesday":
+        console.log(`Prepare theory videos!`);
+        break;
+    case "wednesday":
+    case "thursday":
+        console.log(`Write code examples!`);
+        break;
+    case "friday":
+        console.log(`Record videos!`);
+        break;
+    case "saturday":
+    case "sunday":
+        console.log(`Enjoy the weekend!`);
+        break;
+    default:
+        console.log(`Not a valid day!`);
+}
+
+/*STATEMENTS AND EXPRESSIONS*/
+//expressions produce values & statements are full sentences that translate our actions
+
+/*THE CONDITIONAL TERNARY OPERATOR*/
+
+const exampleNumber = 23;
+exampleNumber >= 18 ? console.log(`I like to drink wine 🍷`) : console.log(`I like to drink water 💧`);
+
+const drink = exampleNumber >= 18 ? `wine 🍷` : `water 💧`;
+console.log(drink);
 
 /**********************************/
 /*ASSIGNMENTS JS FUNDAMENTALS ONE*/
@@ -128,7 +265,7 @@ console.log(typeof isIsland, typeof population, typeof  country, typeof language
 
 let populationHalfOne = population/2;
 let populationHalfTwo = population/2;
-console.log(populationHalfOne);
+console.log(populationHalfOne, populationHalfTwo);
 
 console.log(population++);
 
@@ -138,70 +275,3 @@ console.log(population > 33000000);
 
 let description = country + ' is in ' + continent + ', and its ' + population + ' people speak '+ language;
 console.log(description);
-
-/**********************************/
-/*CODING CHALLENGE #1            */
-/********************************/
-
-/*Mark and John are trying to compare their BMI (Body Mass Index), which is
-calculated using the formula:
-BMI = mass / height ** 2 = mass / (height * height) (mass in kg
-and height in meter).
-Your tasks:
-1. Store Mark's and John's mass and height in variables
-2. Calculate both their BMIs using the formula (you can even implement both
-versions)
-3. Create a Boolean variable 'markHigherBMI' containing information about
-whether Mark has a higher BMI than John.
-Test data:
-§ Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95
-m tall.
-§ Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76
-m tall.
-GOOD LUCK*/
-
-let massOfJhon, massOfMark, heightOfJhon, heightOfMark, bmiOfJhon, bmiOfMark;
-let markHigherBMI;
-
-massOfJhon = prompt('Introduce massOfJhon');
-massOfMark = prompt('Introduce massOfMark');
-heightOfJhon = prompt('Introduce heightOfJhon');
-heightOfMark = prompt('Introduce heightOfMark');
-
-bmiOfJhon = massOfJhon/ heightOfJhon ** 2;
-bmiOfMark = massOfMark/ heightOfMark ** 2;
-
-markHigherBMI = bmiOfMark > bmiOfJhon;
-console.log(bmiOfJhon, bmiOfMark);
-console.log(markHigherBMI);
-
-/**********************************/
-/*CODING CHALLENGE #2            */
-/********************************/
-
-/*Coding Challenge #2
-Use the BMI example from Challenge #1, and the code you already wrote, and
-improve it.
-    Your tasks:
-    1. Print a nice output to the console, saying who has the higher BMI. The message
-is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
-2. Use a template literal to include the BMI values in the outputs. Example: "Mark's
-BMI (28.3) is higher than John's (23.9)!"
-Hint: Use an if/else statement
-GOOD LUCK*/
-
-let higherBMI, lowerBMI, higherBMIValue, lowerBMIValue;
-
-if (bmiOfMark > bmiOfJhon){
-    higherBMI = 'Mark';
-    higherBMIValue = bmiOfMark;
-    lowerBMI = 'John'
-    lowerBMIValue = bmiOfJhon;
-} else {
-    higherBMI = 'John';
-    higherBMIValue = bmiOfJhon;
-    lowerBMI = 'Mark'
-    lowerBMIValue = bmiOfMark;
-}
-
-console.log(`${higherBMI}'s BMI (${higherBMIValue}) is higher than ${lowerBMI}'s (${lowerBMIValue})`);
