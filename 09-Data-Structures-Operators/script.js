@@ -203,7 +203,150 @@ restaurant.orderPizza('mushrooms', 'onions', 'olives', 'spinach');
 
 restaurant.orderPizza('mushrooms');
 
+//107. Short Circuiting (&& and || Operators)
 
+//Use any data type, Return any data type, short-circuiting
+// OR Operator
+console.log(3 || 'Victor');
+console.log('' || 'Victor');
+console.log(true || 0); //console.log(true);
+console.log(undefined || null); //console.log(null);
+console.log(undefined || 0 || '' || 'Hello' || 3 || 'Victor');  //console.log(0 || '' || 'Hello' || 3 || 'Victor');
+
+//Practical example
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+// AND Operator
+console.log(0 && 'Victor');
+console.log(7 && 'Victor');
+console.log('Hello' && 23 && null && 'Victor');
+
+//Practical example
+if (restaurant.orderPizza) {
+    restaurant.orderPizza('Peperoni', 'Mushrooms');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('Peperoni', 'Spinach');
+
+//108. The Nullish Coalescing Operator (??)
+
+const guests3 = restaurant.numGuests || 10;
+console.log(guests3);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guests4 = restaurant.numGuests ?? 10;
+console.log(guests4);
+
+//110. Looping Arrays: The for-of Loop
+
+const fullMenu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(fullMenu2);
+
+for (const item of fullMenu2) console.log(item);
+
+for (const item of fullMenu2.entries()) {
+    console.log(item);
+}
+
+//fullMenu2.entries()
+console.log([...fullMenu2.entries()]);
+
+//starting menu from element 1
+for (const item of fullMenu2.entries()) {
+    console.log(`Item ${item[0] + 1} : is ${item[1]}`);
+}
+
+//using destructuring
+for (const [i, el] of fullMenu2.entries()) {
+    console.log(`${i + 1} : ${el}`);
+}
+
+//111. Enhanced Object Literals
+
+const weekdaysOne = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const cubanOpeningHours = {
+    [`day-${1+1}`]: {
+        open: 12,
+        close: 22,
+    },
+    [weekdaysOne[2]]: {
+        open: 12,
+        close: 22,
+    },
+    thu: {
+        open: 12,
+            close: 22,
+    },
+    fri: {
+        open: 11,
+            close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+            close: 24,
+    },
+};
+
+const anotherRestaurant = {
+    name: 'Another Classic Cuban',
+    location: 'Galiano 21, Havana, Cuba',
+    categories: ['Cuban', 'Local'],
+    starterMenu: ['Vegetables Salad', 'Tamal', 'Tostones'],
+    mainMenu: ['Pork Ribs', 'Fried chickpeas', 'Roast Beef Steak'],
+
+    openingHours: cubanOpeningHours,
+    //ES6 Enhanced Object Literals
+    cubanOpeningHours,
+
+    order (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+
+    orderDelivery ({starterIndex = 1, mainIndex = 0, time = '22:00', address}) {
+        console.log(`Order Received! ${this.starterMenu[starterIndex]} and
+     ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+    },
+
+    orderPasta (ing1, ing2, ing3) {
+        console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+    },
+};
+
+//112. Optional Chaining (?.)
+
+if(anotherRestaurant.openingHours && anotherRestaurant.openingHours.mon)
+console.log(anotherRestaurant.cubanOpeningHours.mon.open);
+
+if(anotherRestaurant.openingHours.fri)
+    console.log(anotherRestaurant.cubanOpeningHours.fri.open);
+
+//Optional Chaining Operator (?/)
+console.log(anotherRestaurant.cubanOpeningHours.mon?.open);
+console.log(anotherRestaurant.cubanOpeningHours?.fri?.open);
+
+const weekdaysTwo = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for(const day of weekdaysTwo) {
+    // console.log(day);
+    const open = anotherRestaurant.cubanOpeningHours[day]?.open ?? `closed`;
+    console.log(`On ${day}, we open at ${open}! `);
+}
+
+//Methods
+console.log(anotherRestaurant.order?.(0, 1) ?? `M does not exist!`);
+console.log(anotherRestaurant.orderSoup?.(0, 1) ?? `Method does not exist!`);
+
+//Arrays
+const users = [{name: `Victor`, email:`hello@coderdad.com`}];
+console.log(users[0]?.name ?? `Empty array!`);
+
+//113. Looping Objects: Object Keys, Values, and Entries
 
 // Data needed for a later exercise
 //const flights =
