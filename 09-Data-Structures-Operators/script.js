@@ -348,6 +348,107 @@ console.log(users[0]?.name ?? `Empty array!`);
 
 //113. Looping Objects: Object Keys, Values, and Entries
 
+//Property Names
+const properties = Object.keys(cubanOpeningHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days:`;
+
+for (const day of Object.keys(cubanOpeningHours)) {
+    openStr += ` ${day},`;
+}
+console.log(openStr);
+
+//Property Values
+const values = Object.values(cubanOpeningHours);
+console.log(values);
+
+//Entire Object
+const entries = Object.entries(cubanOpeningHours);
+console.log(entries);
+
+//[key, value]!
+for (const [key, {open, close}] of entries){
+    console.log(`On ${key} we open at ${open} and close at ${close}!`);
+}
+
+//115. Sets
+
+//Set can Mix Data Types!
+const orderSet = new Set([
+    'Pasta',
+    'Pizza',
+    'Pizza',
+    'Risotto',
+    'Bread',
+    'Pasta',
+    'Pizza',
+]);
+
+console.log(orderSet);
+console.log(new Set('Jonas'));
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Salad'));
+
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+orderSet.delete('Bread');
+// orderSet.clear();   Clear all the elements on the Set
+
+console.log(orderSet);
+
+for (const order of orderSet){
+    console.log(order);
+}
+
+//Example
+
+const staff = ['Waiter','Chef','Manager','Waiter','Chef','Waiter'];
+
+const staffSet = [...new Set(staff)];
+console.log(staffSet);
+console.log(new Set(['Waiter','Chef','Manager','Waiter','Chef','Waiter']).size);
+console.log(new Set('victormoreno').size);
+
+//116. Maps: Fundamentals
+
+const rest = new Map();
+rest.set('name','Classico Italiano');
+rest.set(1, 'Rome, Italy');
+rest.set(2, 'Havana, Cuba');
+
+rest
+    .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+    .set('open',11)
+    .set('close', 23)
+    .set(true, 'We are open :D')
+    .set(false, 'We are close :(');
+
+console.log(rest);
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+let time = 21;    //open
+time = 24;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+console.log(rest.delete(2));
+//rest.clear()          Clear all the elements on the Map
+
+const restArr = [1, 2];
+rest.set(restArr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
+
+console.log(rest);
+console.log(rest.size);
+console.log(rest.get(restArr));
+
+
+
+
 // Data needed for a later exercise
 //const flights =
 //  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
