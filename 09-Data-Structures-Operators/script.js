@@ -446,8 +446,54 @@ console.log(rest);
 console.log(rest.size);
 console.log(rest.get(restArr));
 
+//117. Maps: Iteration
 
+const question = new Map ([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'Javascript'],
+    ['correct', 3],
+    [true, 'Correct'],
+    [false, 'Try Again!']
+]);
 
+console.log(question);
+
+//Convert Objects to Maps
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+
+console.log(hoursMap);
+
+//QuizApp
+console.log(question.get('question'));
+for (const [key, value] of question) {
+    if(typeof key === "number" ){
+        console.log(`Aswer: ${key} - ${value}`);
+    }
+}
+
+const answer = Number(prompt(`Your answer!`));
+console.log(answer);
+
+const ternaryAnswer = question.get('correct') === answer ? question.get(true) : question.get(false) ;
+console.log(ternaryAnswer);
+
+//Optimized by Jonathan
+console.log(question.get(question.get('correct') === answer));
+
+//Convert Map to Array
+console.log([...question]);
+// Is like te same!
+// console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+// 120. Working With Strings - Part 1
+
+const airline = 'AEROMAR';
+const plane = 'A320';
 
 // Data needed for a later exercise
 //const flights =
